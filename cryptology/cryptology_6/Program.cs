@@ -117,29 +117,35 @@ namespace cryptology_6
 
         static void Main(string[] args)
         {
-            
-                    Console.Write("Input p=");
-                    long p = Convert.ToInt64(Console.ReadLine());
-                    if (!IsPrimeNumber(p))
-                    {
-                        throw new ArgumentException("P must be prime number!");
-                    }
-                    long a = FindPrimitiveRoot(p);
-                    Console.WriteLine("g: " + a);
-                    Random rand = new Random();
-                    A first = new A(p, a, rand.Next(8));
-                    B second = new B(p, a, rand.Next(8));
-                    Console.WriteLine("\na: {0}  b:{1}", first.x, second.y);
-                    long xfroma = first.CalculateX();
-                    long yfromb = second.CalculateY();
-                    Console.WriteLine("\nA: " + xfroma);
-                    Console.WriteLine("B: " + yfromb);
-                    long kfroma = first.CalculateK(yfromb);
-                    long kfromb = second.CalculateK(xfroma);
-                    Console.WriteLine("s from A: " + kfroma);
-                    Console.WriteLine("s from B: " + kfromb);
-                    Console.WriteLine("s from A & s from B " + ((kfroma == kfromb) ? "EQUALS!!!" : "NOT equals!!!"));
-                    Console.ReadKey();
+            Console.Write("Input p= ");
+            long p = Convert.ToInt64(Console.ReadLine());
+            if (!IsPrimeNumber(p))
+            {
+                throw new ArgumentException("P must be prime number!");
+            }
+            long a = FindPrimitiveRoot(p);
+
+            Console.WriteLine("g: " + a);
+
+            Random rand = new Random();
+            A first = new A(p, a, rand.Next(8));
+            B second = new B(p, a, rand.Next(8));
+
+            Console.WriteLine("\na: {0}  b:{1}", first.x, second.y);
+
+            long xfroma = first.CalculateX();
+            long yfromb = second.CalculateY();
+
+            Console.WriteLine("\nA: " + xfroma);
+            Console.WriteLine("B: " + yfromb);
+
+            long kfroma = first.CalculateK(yfromb);
+            long kfromb = second.CalculateK(xfroma);
+
+            Console.WriteLine("s from A: " + kfroma);
+            Console.WriteLine("s from B: " + kfromb);
+            Console.WriteLine("s from A & s from B " + ((kfroma == kfromb) ? "EQUALS!!!" : "NOT equals!!!"));
+            Console.ReadKey();
         }
     }
 }
